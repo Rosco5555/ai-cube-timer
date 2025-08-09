@@ -108,6 +108,19 @@ const Statistics: React.FC<{ times: number[] }> = ({ times }) => {
     return bestAvg === Infinity ? '-' : (bestAvg / 1000).toFixed(2);
   };
 
+  const getBestSingle = (): string => {
+    if (times.length === 0) return '-';
+    const best = Math.min(...times);
+    return (best / 1000).toFixed(2);
+  };
+
+  const getWorstSingle = (): string => {
+    if (times.length === 0) return '-';
+    const worst = Math.max(...times);
+    return (worst / 1000).toFixed(2);
+  };
+
+
 
   const calculateSessionAverage = (): string => {
     const count = times.length;
@@ -144,6 +157,7 @@ const Statistics: React.FC<{ times: number[] }> = ({ times }) => {
           <span className="stat-label">Session Average:</span> 
           <span className="stat-value">{calculateSessionAverage()}</span>
         </div>
+        <div className="stat-item"> <span className="stat-label">Best single:</span> <span className="stat-value">{getBestSingle()}</span> </div> <div className="stat-item"> <span className="stat-label">Worst single:</span> <span className="stat-value">{getWorstSingle()}</span> </div>
         <div className="stat-item">
           <span className="stat-label">Best Ao5:</span>
           <span className="stat-value">{getBestAverage(5)}</span>
