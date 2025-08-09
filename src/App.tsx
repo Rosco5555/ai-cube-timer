@@ -108,6 +108,18 @@ const Statistics: React.FC<{ times: number[] }> = ({ times }) => {
     return bestAvg === Infinity ? '-' : (bestAvg / 1000).toFixed(2);
   };
 
+
+  const calculateSessionAverage = (): string => {
+    const count = times.length;
+    if (count < 3) return '-';
+    const sorted = [...times].sort((a, b) => a - b);
+    const trimmed = sorted.slice(1, -1);
+    if (trimmed.length === 0) return '-';
+    const average = trimmed.reduce((sum, time) => sum + time, 0) / trimmed.length;
+    return (average / 1000).toFixed(2);
+  };
+
+
   return (
     <div className="statistics">
       <h3>Statistics</h3>
@@ -128,6 +140,10 @@ const Statistics: React.FC<{ times: number[] }> = ({ times }) => {
           <span className="stat-label">Ao100:</span>
           <span className="stat-value">{calculateAverage(100)}</span>
         </div>
+        <div className="stat-item"> 
+          <span className="stat-label">Session Average:</span> 
+          <span className="stat-value">{calculateSessionAverage()}</span>
+        </div>
         <div className="stat-item">
           <span className="stat-label">Best Ao5:</span>
           <span className="stat-value">{getBestAverage(5)}</span>
@@ -136,6 +152,14 @@ const Statistics: React.FC<{ times: number[] }> = ({ times }) => {
           <span className="stat-label">Best Ao12:</span>
           <span className="stat-value">{getBestAverage(12)}</span>
         </div>
+        <div className="stat-item"> 
+          <span className="stat-label">Best Ao50:</span> 
+          <span className="stat-value">{getBestAverage(50)}</span>
+         </div> 
+         <div className="stat-item"> 
+          <span className="stat-label">Best Ao100:</span> 
+          <span className="stat-value">{getBestAverage(100)}</span> 
+         </div>
       </div>
     </div>
   );
