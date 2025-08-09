@@ -1,69 +1,21 @@
-# React + TypeScript + Vite
+# Attempted one shot at a basic speed solving cubing website in React + Typescript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## PROMPT:
 
-Currently, two official plugins are available:
+Write me react + typescript app that is rubiks cube timer website. The spacebar stops and starts the timer. When the timer is stopped a new Rubik's cube scramble is generated using the TNoodle algorithm.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The times should be stored in local storage and displayed a list.
 
-## Expanding the ESLint configuration
+The current average of 5, average of 12, average of 50, and average of 100 should be calculated.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+These are calculated by removing the highest and lowest value. For example 1,2,34,5 has an average of 5 of 3.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Also add a button to clear all the times and averages
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Model: Claude Opus 4.1
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Follow up prompts:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The page is overflowing vertically when there are too many times. The width of the page changes depending on the length of the scramble. I want both to be constant
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The width of the content still changes depending on the length of the scramble. Show me ONLY the css I need to fix this
